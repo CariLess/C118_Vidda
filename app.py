@@ -5,7 +5,8 @@ from text_sentiment_prediction import *
 app = Flask(__name__)
 @app.route('/')
 def index():
-    return render_template('index.html')
+    entries = show_entry()
+    return render_template('index.html',entries=entries)
  
 @app.route('/predict-emotion', methods=["POST"])
 def predict_emotion():
@@ -40,9 +41,10 @@ def save_entry():
     emotion = request.json.get("emotion")
     save_text = request.json.get("text")
 
-    save_text = save_text.replace("\n", " ")
-
-    entry= 
+    entry= date+","+save_text+","+emotion
+    file_handler=open('./static/data_files/data_entry.csv','a')
+    file_handler.write(entry+'\n')
+    return jsonify("Success")
 
     
 

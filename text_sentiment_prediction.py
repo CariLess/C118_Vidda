@@ -70,7 +70,7 @@ def predict(text):
         return predicted_emotion,predicted_emotion_img_url
 
 def show_entry():
-    day_entry_list = pd.read_csv("./static/assets/data_files/data_entry.csv")
+    day_entry_list = pd.read_csv("./static/data_files/data_entry.csv")
 
     day_entry_list = day_entry_list.iloc[::-1]
 

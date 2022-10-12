@@ -54,24 +54,28 @@ $(function () {
         });
     });
     $("#save_button").click(function () {
-        save_data:{
+        save_data={
+            "date":display_date,
+            "text":$("#text").val(),
+            "emotion":predicted_emotion
 
 
         }
         $.ajax({
-            type:
-            url:
-            data:
-            dataType:
-            contentType:
+            type:'POST',
+            url:"/save-entry",
+            data:JSON.stringify(save_data),
+            dataType:"json",
+            contentType:'application/json',
             success: function(){
+                alert("tu entrada ha sido guardada exitosamente")
+                window.location.reload()
 
             },
             error: function (result) {
                 alert(result.responseJSON.message)
             }
         })
-    }
+    })
 
 })
-
